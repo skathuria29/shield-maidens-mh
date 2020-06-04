@@ -1,0 +1,9 @@
+{
+	"HOST": "127.0.0.1",
+	"PORT": 8070,
+    "MONGODB_URI": "mongodb://localhost:27017/shieldMaidens",
+    "ID_OPTIONS": {
+		"length": 20,
+		"charset": "alphanumeric"
+	}
+}

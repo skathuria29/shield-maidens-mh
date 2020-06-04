@@ -1,0 +1,8 @@
+const ENVS = {
+	PRODUCTION: 'PRODUCTION',
+	DEVELOPMENT: 'DEVELOPMENT',
+	STAGING: 'STAGING'
+};
+module.exports = {
+	ENVS
+};
