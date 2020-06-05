@@ -25,7 +25,7 @@ async function createActivity(req, res) {
 
 async function getActivity(req, res) {
     try {
-        const activity = await Activities.getActivity('sessionId', req.params.id);
+        const activity = await Activities.getActivity('activityId', req.params.id);
         return sendSuccessResponse(activity, res);
     } catch(err) {
         commonErrorHandling(err, {
