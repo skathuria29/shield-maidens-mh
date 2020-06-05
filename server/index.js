@@ -18,7 +18,8 @@ const { ENVS } = require('./constants/index');
 
 const app = express();
 const startServer = () => {
-	return app.listen(config.get('PORT'), () => console.log(`Server is running on ${config.get('PORT')}`));
+	const port = process.env.PORT || 8080;
+	return app.listen(port, () => console.log(`Server is running on ${config.get('PORT')}`));
 };
 
 app.use(cors());
