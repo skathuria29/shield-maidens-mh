@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 const config = require('config');
 
-const MONGODB_URI = config.get('MONGODB_URI');
+const MONGODB_URI = process.env.MONGODB_URI;
 
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
