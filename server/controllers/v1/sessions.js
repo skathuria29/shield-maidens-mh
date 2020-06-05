@@ -36,7 +36,7 @@ async function getSession(req, res) {
 }
 async function getSessions(req, res) {
     try {
-        const sessions = await Sessions.getSessions();
+        const sessions = await Sessions.getSessions(req.query || {});
         return sendSuccessResponse(sessions, res);
     } catch(err) {
         commonErrorHandling(err, {
@@ -120,5 +120,6 @@ module.exports = {
 	createSession,
 	getSession,
 	updateSession,
-	getSessions
+	getSessions,
+	getSessionByType
 };

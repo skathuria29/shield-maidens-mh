@@ -86,17 +86,7 @@ sessionSchema.statics.getSession = function (key, value) {
 	);
 };
 
-sessionSchema.statics.getSessionByType = function (type) {
-	return this.getUser('type', type);
-};
 
-sessionSchema.statics.getUserSessionId = function (id) {
-	return this.getUser('sessionId', id);
-};
-
-sessionSchema.statics.getUserByUsername = function (username) {
-	return this.getUser('username', username);
-};
 
 // sessionSchema.statics.authenticateUser = async function (email, password) {
 // 	let user = await this.getUserByEmail(email);
