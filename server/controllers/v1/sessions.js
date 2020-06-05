@@ -120,6 +120,5 @@ module.exports = {
 	createSession,
 	getSession,
 	updateSession,
-	getSessions,
-	getSessionByType
+	getSessions
 };
