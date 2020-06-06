@@ -9,6 +9,7 @@ Improve mental wellbeing by leveraging technology to diagnose for group based so
 1. [The architecture](#the-architecture)
 1. [Prerequisite](#prerequisite)
 1. [Technology](#technology)
+1. [Setup](#setup)
 1. [Documents](#documents)
 1. [License](#license)
 
@@ -59,6 +60,13 @@ Product will have a freemium model where users will be provided initial live gro
 - Register for an [IBM Cloud](https://www.ibm.com/account/reg/us-en/signup?formid=urx-42793&eventid=cfc-2020?cm_mmc=OSocial_Blog-_-Audience+Developer_Developer+Conversation-_-WW_WW-_-cfc-2020-ghub-starterkit-education_ov75914&cm_mmca1=000039JL&cm_mmca2=10008917) account. 
 - Require Node installed [Node](https://nodejs.org/en/download/)
 
+## Technology
+- IBM Technology
+  - [Watson Speech to Text](https://www.ibm.com/cloud/watson-speech-to-text)
+  - [Watson Tone Analyzer](https://www.ibm.com/watson/services/tone-analyzer/)
+- Open source technologies
+  - [Nodejs Express App](https://expressjs.com/)
+
 ## Setup
 
 ### To get server up and runnig
@@ -66,11 +74,6 @@ Product will have a freemium model where users will be provided initial live gro
 - run command `npm install`
 - run the script `npm run start`
 
-## Technology
-- IBM Technology
-  - [Watson Speech to Text](https://www.ibm.com/cloud/watson-speech-to-text)
-  - [Watson Tone Analyzer](https://www.ibm.com/watson/services/tone-analyzer/)
-- Open source technologies
-  - [Nodejs Express App](https://expressjs.com/)
+
 
 ## Documents
