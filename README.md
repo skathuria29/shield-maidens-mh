@@ -77,3 +77,4 @@ A user journey in app is going through following steps:-
 
 
 ## Documents
+https://docs.google.com/document/d/1maSm3Jq1JHZn5FSc1PQ-aWY0Z5pG1SBci67Xx4sw0JU/edit#
