@@ -82,3 +82,5 @@ A user journey in app is going through following steps:-
 
 ## Documents
 https://docs.google.com/document/d/1maSm3Jq1JHZn5FSc1PQ-aWY0Z5pG1SBci67Xx4sw0JU/edit#
+### Presenation
+https://docs.google.com/presentation/d/1-KPyi43BTDX0XVoWsEICykRK6KX2ropQcdcoK27ZIzQ/edit#slide=id.g865c738cf0_1_50
