@@ -57,7 +57,7 @@ A user journey in app is going through following steps:-
 ## Prerequisite
 - Register for an [IBM Cloud](https://www.ibm.com/account/reg/us-en/signup?formid=urx-42793&eventid=cfc-2020?cm_mmc=OSocial_Blog-_-Audience+Developer_Developer+Conversation-_-WW_WW-_-cfc-2020-ghub-starterkit-education_ov75914&cm_mmca1=000039JL&cm_mmca2=10008917) account. 
 - Require Node installed [Node](https://nodejs.org/en/download/)
-- Android side - ndk configuration and system permissions like record Audio, external storage and Camera.
+- Android : ndk configuration and system permissions like record Audio, external storage and Camera.
 
 ## Technology
 - Frontend : Android App
