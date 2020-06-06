@@ -1,6 +1,6 @@
 # SENSUM | Mental Wellbeing
 
-Sensum is a platform that helps to improve mental wellbeing by leveraging technology to diagnose for group interaction based solutions. An app that will help normalize the feelings, helping people feel comfortable in sharing their thoughts, state and mental health issues.
+Sensum is a platform that helps to improve mental wellbeing by leveraging technology to diagnose problems through group interaction based solutions. An app that will help normalize the feelings, helping people feel comfortable in sharing their thoughts, state and mental health issues.
 
 ## Contents
 
