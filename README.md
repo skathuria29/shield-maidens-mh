@@ -36,11 +36,22 @@ Product will have a freemium model where users will be provided initial live gro
 
 ## The architecture
 
-### Sensum App
+### Sensum App 
 ![Sensum App](https://github.com/skathuria29/shield-maidens-mh/blob/master/Screenshot%202020-06-06%20at%202.22.32%20PM.png)
 
 ### Video transcription/translation app
 ![Video transcription/translation app](https://github.com/skathuria29/shield-maidens-mh/blob/master/Screenshot%202020-06-06%20at%202.22.32%20PM.png)
+//Todo attach running app gif instead of the above image
+1. The user navigates to the site and uploads a video file.
+2. Watson Speech to Text processes the audio and extracts the text.
+3. Watson Translation (optionally) can translate the text to the desired language.
+4. The app stores the translated text as a document within Object Storage.
+
+### Android app
+<img src="https://github.com/skathuria29/shield-maidens-mh/blob/master/Screenshot_20200606-180414.png" width=250> <img src="https://github.com/skathuria29/shield-maidens-mh/blob/master/Screenshot_20200606-175331.png" width=250> <img src="https://github.com/skathuria29/shield-maidens-mh/blob/master/Screenshot_20200606-175543.png" width=250>
+
+<img src="https://github.com/skathuria29/shield-maidens-mh/blob/master/videogif.gif" width=250>
+
 //Todo attach running app gif instead of the above image
 1. The user navigates to the site and uploads a video file.
 2. Watson Speech to Text processes the audio and extracts the text.
