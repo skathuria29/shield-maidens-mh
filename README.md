@@ -36,7 +36,7 @@ Product will have a freemium model where users will be provided initial live gro
 ## The architecture
 
 ### Sensum App
-![Quiz app](https://developer.ibm.com/developer/tutorials/cfc-starter-kit-quiz-app-example/images/cfc-covid19-remote-education-diagram-1.png)
+![Sensum App](https://github.com/skathuria29/shield-maidens-mh/blob/master/Screenshot%202020-06-06%20at%202.22.32%20PM.png)
 
 1. The user open the application and will be presented with .
 2. The user is presented with a website, a React front end.
