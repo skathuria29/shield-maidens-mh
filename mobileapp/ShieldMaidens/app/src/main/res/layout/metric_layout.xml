@@ -9,14 +9,7 @@
     android:background="@color/transparent_overlay"
     android:paddingBottom="@dimen/bottom_padding">
 
-    <TextView
-        android:id="@+id/tv_timer"
-        android:layout_width="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        tools:text="12:00"
-        android:layout_centerInParent="true"
-        android:layout_height="wrap_content"/>
+
     <!-- Left MetricsManager-->
     <LinearLayout
         android:orientation="vertical"

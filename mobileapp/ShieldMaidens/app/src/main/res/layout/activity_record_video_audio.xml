@@ -100,6 +100,7 @@
             android:layout_height="37dp"
             android:layout_marginRight="5dp"
             android:background="@drawable/audio"
+            android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="@id/record_audio"
             app:layout_constraintEnd_toEndOf="@id/record_audio"
             app:layout_constraintTop_toTopOf="parent" />
@@ -115,7 +116,9 @@
         app:layout_constraintTop_toBottomOf="@id/cl_audio"
         app:layout_constraintStart_toStartOf="@id/cl_audio"
         app:layout_constraintEnd_toEndOf="@id/cl_audio"
-        android:visibility="visible"
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/grey_bg"
         >
         <com.visualizer.amplitude.AudioRecordView
             android:id="@+id/audioRecordView"
@@ -147,10 +150,22 @@
             custom:avColor="@color/colorAccent"
             custom:avDensity="0.8"
             custom:avSpeed="normal"
-            android:visibility="gone"
+            android:visibility="visible"
             custom:avType="fill"
+            android:layout_marginStart="5dp"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/cross"
             app:layout_constraintStart_toStartOf="parent"/>
+
+        <ImageView
+            android:id="@+id/slider"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/slider"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@id/playIcon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/cross"/>
 
         <ImageView
             android:id="@+id/playIcon"
@@ -158,6 +173,8 @@
             android:layout_height="30dp"
             android:layout_marginTop="30dp"
             android:clickable="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
             android:visibility="gone"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -165,15 +182,16 @@
 
         <ImageView
             android:id="@+id/cross"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:background="@drawable/cross"
             android:padding="10dp"
             android:visibility="gone"
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
-            app:layout_constraintTop_toTopOf="@id/bars"
-            app:layout_constraintEnd_toEndOf="@id/bars"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
