@@ -1,6 +1,6 @@
 # SENSUM | Mental Wellbeing
 
-Improve mental wellbeing by leveraging technology to diagnose for group based solutions.
+Sensum is a platform that helps to improve mental wellbeing by leveraging technology to diagnose the mental health issues using group interaction based solutions. An app that will help normalize the feelings, helping people feel comfortable in sharing their thoughts, state and mental health issues.
 
 ## Contents
 
@@ -16,7 +16,7 @@ Improve mental wellbeing by leveraging technology to diagnose for group based so
 ## Overview
 
 ### What's the problem?
-There is a mismatch between the supply and demand in the mental health space with **4000 mental health professionals for ~100 Mn people who suffer from mental health problems** in India as per a WHO report. Mental wellbeing is being further impacted due to the ongoing pandemic and lockdown aggravating the gap between demand and supply
+There is a mismatch between the supply and demand in the mental health space with **4000 mental health professionals for ~100 Mn people who suffer from mental health problems** in India as per a WHO report. Mental wellbeing is being further impacted due to the ongoing pandemic and lockdown aggravating the gap between demand and supply.
 
 ### How can technology help?
 Due to the ongoing pandemic and stringent social distancing protocol, we are providing an Android App solution for **Mental Wellness** by
@@ -39,24 +39,19 @@ Product will have a freemium model where users will be provided initial live gro
 ### Sensum App 
 ![Sensum App](https://github.com/skathuria29/shield-maidens-mh/blob/master/Screenshot%202020-06-06%20at%202.22.32%20PM.png)
 
-### Video transcription/translation app
-![Video transcription/translation app](https://github.com/skathuria29/shield-maidens-mh/blob/master/Screenshot%202020-06-06%20at%202.22.32%20PM.png)
-//Todo attach running app gif instead of the above image
-1. The user navigates to the site and uploads a video file.
-2. Watson Speech to Text processes the audio and extracts the text.
-3. Watson Translation (optionally) can translate the text to the desired language.
-4. The app stores the translated text as a document within Object Storage.
-
 ### Android app
 <img src="https://github.com/skathuria29/shield-maidens-mh/blob/master/Screenshot_20200606-180414.png" width=250> <img src="https://github.com/skathuria29/shield-maidens-mh/blob/master/Screenshot_20200606-175331.png" width=250> <img src="https://github.com/skathuria29/shield-maidens-mh/blob/master/Screenshot_20200606-175543.png" width=250>
 
 <img src="https://github.com/skathuria29/shield-maidens-mh/blob/master/videogif.gif" width=250>
 
-//Todo attach running app gif instead of the above image
-1. The user navigates to the site and uploads a video file.
-2. Watson Speech to Text processes the audio and extracts the text.
-3. Watson Translation (optionally) can translate the text to the desired language.
-4. The app stores the translated text as a document within Object Storage.
+A user journey in app is going through following steps:-
+1. User is asked to enter name for a record and is asked to take a wellbeing assessment test to track the current state of mind.
+2. Assessment contains few questions which has four options and questions with voice/video input.
+3. User can either give a audio input or a video recording, recorded audio input can be listened using a player and can be recorded again. For Video input user visits a new screen in which app detects the facial expressions and emotions and displays the metric on screen like sadnesss, joy, angry, disgust etc.
+4. The idea to capture the user response through three medium(Q&A, voice and video) is to determine and analyze the emotions user is feeling with more accurate results. By capturing voice, we use **IBM Watson Speech-to-Text service** to convert the audio into text and the we apply **IBM Watson Tone Analyzer service** which provides the tone of text. For instance sadness, analytical, confidence, joy etc. We average out these three different responses and present user a score which lies between "More critical" and "Less critical" range of anxious meter.
+5. Similarly, while recording video we take average of emotions metric captured and display the score.
+6. Based on the Q&A, video and audio input we show user list of recommended group therapy sessions  for anxiety . 
+4. The idea to capture the user response through three medium(Q&A, voice and video) is to determine and analyze the emotions user is feeling with more accurate results. By capturing voice, we use **IBM Watson Speech-to-Text service** to convert the audio into text and the we apply **IBM Watson Tone Analyzer service** which provides the tone of text. For instance sadness, analytical, confidence, joy etc. We average out these three different responses and present user a score which lies between "More critical" and "Less critical" range of anxious meter.
 
 ## Prerequisite
 - Register for an [IBM Cloud](https://www.ibm.com/account/reg/us-en/signup?formid=urx-42793&eventid=cfc-2020?cm_mmc=OSocial_Blog-_-Audience+Developer_Developer+Conversation-_-WW_WW-_-cfc-2020-ghub-starterkit-education_ov75914&cm_mmca1=000039JL&cm_mmca2=10008917) account. 
