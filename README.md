@@ -50,7 +50,7 @@ A user journey in app is going through following steps:-
 3. User can either give a audio input or a video recording, recorded audio input can be listened using a player and can be recorded again. For Video input user visits a new screen in which app detects the facial expressions and emotions and displays the metric on screen like sadnesss, joy, angry, disgust etc.
 4. The idea to capture the user response through three medium(Q&A, voice and video) is to determine and analyze the emotions user is feeling with more accurate results. By capturing voice, we use **IBM Watson Speech-to-Text service** to convert the audio into text and the we apply **IBM Watson Tone Analyzer service** which provides the tone of text. For instance sadness, analytical, confidence, joy etc. We average out these three different responses and present user a score which lies between "More critical" and "Less critical" range of anxious meter.
 5. Similarly, while recording video we take average of emotions metric captured and display the score.
-6. Based on the Q&A, video and audio input we show user list of recommended group therapy sessions. These sessions have a certain number of participants and a psychaitrist just like in a round table psychaitrist session. Where user can enter the session and express their feelings and thoughts.
+6. Based on the Q&A, video and audio input we show user list of recommended group therapy sessions. These sessions have a certain number of participants and a psychiatrist just like in a round table psychiatrist session. Where user can enter the session and express their feelings and thoughts.
 7. We are also recommending user to go through the suggested tasks and activities for more engaging and habit building experience.
 
 
