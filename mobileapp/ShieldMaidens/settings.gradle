@@ -1,0 +1,3 @@
+rootProject.name='ShieldMaidens'
+include ':app'
+include ':facerecognition'

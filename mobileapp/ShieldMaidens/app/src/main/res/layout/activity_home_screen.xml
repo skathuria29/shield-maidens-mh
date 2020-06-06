@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    tools:context=".HomeScreenActivity">
+
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="63dp"
+        android:padding="10dp"
+        android:background="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="6dp"
+        android:layout_marginLeft="12dp"
+        android:indeterminate="false"
+        android:progressDrawable="@drawable/bg_progressbar"
+        app:layout_constraintBottom_toBottomOf="@id/iv_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_back"
+        app:layout_constraintTop_toTopOf="@id/iv_back" />
+
+    <TextView
+        android:id="@+id/counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.01"
+        android:textColor="#474747"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toEndOf="@id/iv_back"
+        app:layout_constraintTop_toBottomOf="@id/progressBar"
+        tools:text="2/6" />
+
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="47dp"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.01"
+        android:paddingHorizontal="24dp"
+        android:textColor="#474747"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/counter"
+        tools:text="How has your appetite been over the last few weeks?" />
+
+    <TextView
+        android:id="@+id/record_audio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="33dp"
+        android:background="@drawable/bg_rounded"
+        android:fontFamily="sans-serif"
+        android:letterSpacing="0.01"
+        android:paddingVertical="14dp"
+        android:paddingStart="20dp"
+        android:paddingLeft="20dp"
+        android:textColor="#474747"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintTop_toBottomOf="@id/question"
+        tools:text="I eat more than usual" />
+
+    <TextView
+        android:id="@+id/record_video"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="33dp"
+        android:background="@drawable/bg_rounded"
+        android:fontFamily="sans-serif"
+        android:letterSpacing="0.01"
+        android:paddingVertical="14dp"
+        android:paddingStart="20dp"
+        android:paddingLeft="20dp"
+        android:textColor="#474747"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintTop_toBottomOf="@id/record_audio"
+        tools:text="I eat more than usual" />
+
+    <TextView
+        android:id="@+id/option3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="33dp"
+        android:background="@drawable/bg_rounded"
+        android:fontFamily="sans-serif"
+        android:letterSpacing="0.01"
+        android:paddingVertical="14dp"
+        android:paddingStart="20dp"
+        android:paddingLeft="20dp"
+        android:textColor="#474747"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintTop_toBottomOf="@id/record_video"
+        tools:text="I eat more than usual" />
+
+    <TextView
+        android:id="@+id/option4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="33dp"
+        android:background="@drawable/bg_rounded"
+        android:fontFamily="sans-serif"
+        android:letterSpacing="0.01"
+        android:paddingVertical="14dp"
+        android:paddingStart="20dp"
+        android:paddingLeft="20dp"
+        android:textColor="#474747"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintTop_toBottomOf="@id/option3"
+        tools:text="I eat more than usual" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
