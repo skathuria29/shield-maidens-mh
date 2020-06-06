@@ -5,13 +5,13 @@ Sensum is a platform that helps to improve mental wellbeing by leveraging techno
 ## Contents
 
 1. [Overview](#overview)
+1. [Youtube Link](#youtube-link)
 1. [The idea](#the-idea)
 1. [The architecture](#the-architecture)
 1. [Prerequisite](#prerequisite)
 1. [Technology](#technology)
 1. [Setup](#setup)
 1. [Documents](#documents)
-1. [License](#license)
 
 ## Overview
 
@@ -24,6 +24,10 @@ Due to the ongoing pandemic and stringent social distancing protocol, we are pro
 - With the current solution we are normalising the results of Q&A, Voice and Video input.
 - Using the capabilities of ML for analysing emotions by using **IBM Watson Speech to Text and Tone Analyzer** and **Face recognition** through native android library.
 - Planning to leverage the **Face Recognition** ML technology to help healthcare practitioners monitor the sessions and get generated reports of individual participant's progress and to provide appropriate treatment.
+
+
+## Youtube link
+https://www.youtube.com/watch?v=4KVQSuz5Yes
 
 
 ## The idea
