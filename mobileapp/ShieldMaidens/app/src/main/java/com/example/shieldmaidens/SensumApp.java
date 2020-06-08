@@ -7,6 +7,7 @@ import cafe.adriel.androidaudioconverter.callback.ILoadCallback;
 
 public class SensumApp extends Application {
 
+    public static String username = "Adam";
     @Override
     public void onCreate() {
         super.onCreate();

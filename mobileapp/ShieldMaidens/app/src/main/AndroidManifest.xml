@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:node="replace">
-        <activity android:name=".SessionsActivity"></activity>
+        <activity android:name=".AddNameActivity"></activity>
+        <activity android:name=".SessionsActivity" />
         <activity android:name=".WebViewActivity" />
         <activity android:name=".AssesmentResultScreen" />
 

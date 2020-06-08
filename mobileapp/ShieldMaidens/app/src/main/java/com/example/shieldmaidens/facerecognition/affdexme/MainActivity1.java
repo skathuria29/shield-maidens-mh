@@ -19,22 +19,27 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
+
 import com.affectiva.android.affdex.sdk.Frame;
 import com.affectiva.android.affdex.sdk.Frame.ROTATE;
 import com.affectiva.android.affdex.sdk.detector.CameraDetector;
 import com.affectiva.android.affdex.sdk.detector.Detector;
 import com.affectiva.android.affdex.sdk.detector.Face;
+import com.example.shieldmaidens.AssesmentResultScreen;
 import com.example.shieldmaidens.R;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class MainActivity1 extends Activity
@@ -82,7 +87,7 @@ public class MainActivity1 extends Activity
     int cameraPreviewHeight = 0;
     CameraDetector.CameraType cameraType;
     boolean mirrorPoints = false;
-    private Button recordButton;
+    private ImageView recordButton;
     private TextView tv_timer;
     List<Float> scoresArray = new ArrayList<>();
 
@@ -145,6 +150,7 @@ public class MainActivity1 extends Activity
         progressBar = (ProgressBar) findViewById(R.id.progress_bar);
         pleaseWaitTextView = (TextView) findViewById(R.id.please_wait_textview);
         recordButton = findViewById(R.id.iv_record);
+        recordButton.setVisibility(View.VISIBLE);
 
         //Initialize views to display metrics
         metricNames = new TextView[NUM_METRICS_DISPLAYED];
@@ -211,14 +217,30 @@ public class MainActivity1 extends Activity
         recordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                recordButton.setBackground(ContextCompat.getDrawable(MainActivity1.this, R.drawable.ic_recordstop));
                 new CountDownTimer(10000, 1000) {
 
                     public void onTick(long millisUntilFinished) {
-                        tv_timer.setText(""+millisUntilFinished / 1000);
+                        long millis = millisUntilFinished;
+                        tv_timer.setText("" + String.format("%02d:%02d",
+                                TimeUnit.MILLISECONDS.toMinutes(millis) -
+                                        TimeUnit.MINUTES.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),
+                                TimeUnit.MILLISECONDS.toSeconds(millis) -
+                                        TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis))));
                     }
 
                     public void onFinish() {
-                        tv_timer.setText("done!");
+                        tv_timer.setText("Recorded");
+                        double sum = 0;
+                        for (double s :
+                                scoresArray) {
+                            sum+= s;
+                        }
+                        sum = sum/scoresArray.size();
+                        recordButton.setBackground(ContextCompat.getDrawable(MainActivity1.this, R.drawable.ic_recordplay));
+                        Intent intent = new Intent(MainActivity1.this, AssesmentResultScreen.class);
+                        intent.putExtra("percentage", sum);
+                        startActivity(intent);
                         //TODO finish activity calculate average of score and put in
                     }
                 }.start();
@@ -234,7 +256,7 @@ public class MainActivity1 extends Activity
 
         detector = new CameraDetector(this, CameraDetector.CameraType.CAMERA_FRONT, cameraView);
 
-		// update the license path here if you name your file something else
+        // update the license path here if you name your file something else
         detector.setLicensePath("license.txt");
         detector.setImageListener(this);
         detector.setFaceListener(this);
@@ -262,19 +284,19 @@ public class MainActivity1 extends Activity
         detectorProcessRate = PreferencesUtils.getFrameProcessingRate(sharedPreferences);
         detector.setMaxProcessRate(detectorProcessRate);
 
-        if (sharedPreferences.getBoolean("fps",isFPSVisible)) {    //restore isFPSMetricVisible
+        if (sharedPreferences.getBoolean("fps", isFPSVisible)) {    //restore isFPSMetricVisible
             setFPSVisible(true);
         } else {
             setFPSVisible(false);
         }
 
-        if (sharedPreferences.getBoolean("track",drawingView.getDrawPointsEnabled())) {  //restore isTrackingDotsVisible
+        if (sharedPreferences.getBoolean("track", drawingView.getDrawPointsEnabled())) {  //restore isTrackingDotsVisible
             setTrackPoints(true);
         } else {
             setTrackPoints(false);
         }
 
-        if (sharedPreferences.getBoolean("measurements",drawingView.getDrawMeasurementsEnabled())) { //restore show measurements
+        if (sharedPreferences.getBoolean("measurements", drawingView.getDrawMeasurementsEnabled())) { //restore show measurements
             setShowMeasurements(true);
         } else {
             setShowMeasurements(false);
@@ -282,15 +304,15 @@ public class MainActivity1 extends Activity
 
         //populate metric displays
         for (int n = 0; n < NUM_METRICS_DISPLAYED; n++) {
-            activateMetric(n,PreferencesUtils.getMetricFromPrefs(sharedPreferences, n));
+            activateMetric(n, PreferencesUtils.getMetricFromPrefs(sharedPreferences, n));
         }
     }
 
     /**
      * Populates a TextView to display a metric name and readies a MetricDisplay to display the value.
      * Uses reflection to:
-     *  -enable the corresponding metric in the Detector object by calling Detector.setDetect<MetricName>()
-     *  -save the Method object that will be invoked on the Face object received in onImageResults() to get the metric score
+     * -enable the corresponding metric in the Detector object by calling Detector.setDetect<MetricName>()
+     * -save the Method object that will be invoked on the Face object received in onImageResults() to get the metric score
      */
     void activateMetric(int index, MetricsManager.Metrics metric) {
         metricNames[index].setText(MetricsManager.getUpperCaseName(metric));
@@ -310,10 +332,10 @@ public class MainActivity1 extends Activity
                     metricDisplays[index].setIsShadedMetricView(false);
                 }
             } else if (metric.getType() == MetricsManager.MetricType.Expression) {
-                getFaceScoreMethod = Face.Expressions.class.getMethod("get" + MetricsManager.getCamelCase(metric),null);
+                getFaceScoreMethod = Face.Expressions.class.getMethod("get" + MetricsManager.getCamelCase(metric), null);
             }
         } catch (Exception e) {
-            Log.e(LOG_TAG, String.format("Error using reflection to generate methods for %s",metric.toString()));
+            Log.e(LOG_TAG, String.format("Error using reflection to generate methods for %s", metric.toString()));
         }
 
         metricDisplays[index].setMetricToDisplay(metric, getFaceScoreMethod);
@@ -321,7 +343,7 @@ public class MainActivity1 extends Activity
 
     /**
      * Reset the variables used to calculate processed frames per second.
-     * **/
+     **/
     public void resetFPSCalculations() {
         firstSystemTime = SystemClock.elapsedRealtime();
         timeToUpdate = firstSystemTime + 1000L;
@@ -378,7 +400,6 @@ public class MainActivity1 extends Activity
     }
 
 
-
     @Override
     public void onFaceDetectionStarted() {
         leftMetricsLayout.animate().alpha(1); //make left and right metrics appear
@@ -423,7 +444,7 @@ public class MainActivity1 extends Activity
 
         //update metrics with latest face information. The metrics are displayed on a MetricView, a custom view with a .setScore() method.
         for (MetricDisplay metricDisplay : metricDisplays) {
-            updateMetricScore(metricDisplay,face);
+            updateMetricScore(metricDisplay, face);
 
         }
 
@@ -434,7 +455,7 @@ public class MainActivity1 extends Activity
          */
         if (drawingView.getDrawPointsEnabled() || drawingView.getDrawMeasurementsEnabled()) {
             drawingView.setMetrics(face.measurements.orientation.getRoll(), face.measurements.orientation.getYaw(), face.measurements.orientation.getPitch(), face.measurements.getInterocularDistance(), face.emotions.getValence());
-            drawingView.updatePoints(face.getFacePoints(),mirrorPoints);
+            drawingView.updatePoints(face.getFacePoints(), mirrorPoints);
         }
     }
 
@@ -449,13 +470,13 @@ public class MainActivity1 extends Activity
 
         try {
             if (metric.getType() == MetricsManager.MetricType.Emotion) {
-                score = (Float) metricDisplay.getFaceScoreMethod().invoke(face.emotions,null);
+                score = (Float) metricDisplay.getFaceScoreMethod().invoke(face.emotions, null);
                 metricDisplay.setScore(score);
             } else if (metric.getType() == MetricsManager.MetricType.Expression) {
-                score = (Float) metricDisplay.getFaceScoreMethod().invoke(face.expressions,null);
+                score = (Float) metricDisplay.getFaceScoreMethod().invoke(face.expressions, null);
             }
         } catch (Exception e) {
-            Log.e(LOG_TAG, String.format("Error using reflecting to get %s score from face.",metric.toString()));
+            Log.e(LOG_TAG, String.format("Error using reflecting to get %s score from face.", metric.toString()));
         }
         metricDisplay.setScore(score);
         scoresArray.add(score);
@@ -472,8 +493,8 @@ public class MainActivity1 extends Activity
         numberOfFrames += 1;
         long currentTime = SystemClock.elapsedRealtime();
         if (currentTime > timeToUpdate) {
-            float framesPerSecond = (numberOfFrames/(float)(currentTime - firstSystemTime))*1000f;
-            fpsPct.setText(String.format(" %.1f",framesPerSecond));
+            float framesPerSecond = (numberOfFrames / (float) (currentTime - firstSystemTime)) * 1000f;
+            fpsPct.setText(String.format(" %.1f", framesPerSecond));
             timeToUpdate = currentTime + 1000L;
         }
     }
@@ -498,7 +519,7 @@ public class MainActivity1 extends Activity
             try {
                 detector.stop();
             } catch (Exception e) {
-                Log.e(LOG_TAG,e.getMessage());
+                Log.e(LOG_TAG, e.getMessage());
             }
         }
 
@@ -507,11 +528,10 @@ public class MainActivity1 extends Activity
     }
 
 
-
     /**
      * When the user taps the screen, hide the menu if it is visible and show it if it is hidden.
-     * **/
-    void setMenuVisible(boolean b){
+     **/
+    void setMenuVisible(boolean b) {
         isMenuShowingForFirstTime = false;
         isMenuVisible = b;
         if (b) {
@@ -523,8 +543,7 @@ public class MainActivity1 extends Activity
                     View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                             | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                             | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-        }
-        else {
+        } else {
 
             //We hide the navigation bar
             getWindow().getDecorView().setSystemUiVisibility(
@@ -603,7 +622,7 @@ public class MainActivity1 extends Activity
             cameraPreviewWidth = cameraWidth;
             cameraPreviewHeight = cameraHeight;
         }
-        drawingView.setThickness((int)(cameraPreviewWidth/100f));
+        drawingView.setThickness((int) (cameraPreviewWidth / 100f));
 
         mainLayout.post(new Runnable() {
             @Override
@@ -617,21 +636,21 @@ public class MainActivity1 extends Activity
                 if (cameraPreviewWidth == 0 || cameraPreviewHeight == 0 || layoutWidth == 0 || layoutHeight == 0)
                     return;
 
-                float layoutAspectRatio = (float)layoutWidth/layoutHeight;
-                float cameraPreviewAspectRatio = (float)cameraPreviewWidth/cameraPreviewHeight;
+                float layoutAspectRatio = (float) layoutWidth / layoutHeight;
+                float cameraPreviewAspectRatio = (float) cameraPreviewWidth / cameraPreviewHeight;
 
                 int newWidth;
                 int newHeight;
 
                 if (cameraPreviewAspectRatio > layoutAspectRatio) {
                     newWidth = layoutWidth;
-                    newHeight =(int) (layoutWidth / cameraPreviewAspectRatio);
+                    newHeight = (int) (layoutWidth / cameraPreviewAspectRatio);
                 } else {
                     newWidth = (int) (layoutHeight * cameraPreviewAspectRatio);
                     newHeight = layoutHeight;
                 }
 
-                drawingView.updateViewDimensions(newWidth,newHeight,cameraPreviewWidth,cameraPreviewHeight);
+                drawingView.updateViewDimensions(newWidth, newHeight, cameraPreviewWidth, cameraPreviewHeight);
 
                 ViewGroup.LayoutParams params = mainLayout.getLayoutParams();
                 params.height = newHeight;
@@ -652,14 +671,14 @@ public class MainActivity1 extends Activity
                 cameraType = CameraDetector.CameraType.CAMERA_BACK;
                 mirrorPoints = false;
             } else {
-                Toast.makeText(this,"No back-facing camera found", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "No back-facing camera found", Toast.LENGTH_LONG).show();
             }
         } else if (cameraType == CameraDetector.CameraType.CAMERA_BACK) {
             if (isFrontFacingCameraDetected) {
                 cameraType = CameraDetector.CameraType.CAMERA_FRONT;
                 mirrorPoints = true;
             } else {
-                Toast.makeText(this,"No front-facing camera found", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "No front-facing camera found", Toast.LENGTH_LONG).show();
             }
         }
 
@@ -668,7 +687,7 @@ public class MainActivity1 extends Activity
         try {
             detector.setCameraType(cameraType);
         } catch (Exception e) {
-            Log.e(LOG_TAG,e.getMessage());
+            Log.e(LOG_TAG, e.getMessage());
         }
     }
 }

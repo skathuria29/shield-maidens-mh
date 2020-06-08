@@ -3,6 +3,10 @@ package com.example.shieldmaidens;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
@@ -28,6 +32,8 @@ public class AssesmentResultScreen extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         btnContinue = findViewById(R.id.btnContinue);
 
+        Drawable drawable = getResources().getDrawable(R.drawable.result_progress_drawable);
+        progressBar.setProgressDrawable(drawable);
         progressBar.setProgress(intScore);
         progressBar.setMax(100);
 

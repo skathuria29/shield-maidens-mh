@@ -73,6 +73,7 @@ public class RecordVideoAudio extends AppCompatActivity {
     private TextView record_video;
     private Double percentage;
     private ImageView btn_continue;
+    private ImageView slider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +97,7 @@ public class RecordVideoAudio extends AppCompatActivity {
         cross = findViewById(R.id.cross);
         record_video = findViewById(R.id.record_video);
         btn_continue = findViewById(R.id.btn_continue);
+        slider = findViewById(R.id.slider);
 
         record_audio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -183,6 +185,7 @@ public class RecordVideoAudio extends AppCompatActivity {
     private void startPlaying() {
         playIcon.setVisibility(View.VISIBLE);
         bar.setVisibility(View.VISIBLE);
+        slider.setVisibility(View.GONE);
         player = new MediaPlayer();
         try {
             player.setDataSource(fileName);
@@ -213,6 +216,7 @@ public class RecordVideoAudio extends AppCompatActivity {
         bar.setVisibility(View.GONE);
         playIcon.setVisibility(View.GONE);
         cross.setVisibility(View.GONE);
+        slider.setVisibility(View.GONE);
         audioRecordView.setVisibility(View.VISIBLE);
 
         recorder = new MediaRecorder();
@@ -244,6 +248,7 @@ public class RecordVideoAudio extends AppCompatActivity {
         bar.setVisibility(View.VISIBLE);
         playIcon.setVisibility(View.VISIBLE);
         cross.setVisibility(View.VISIBLE);
+        slider.setVisibility(View.VISIBLE);
         audioRecordView.setVisibility(View.GONE);
         timer.cancel();
         audioRecordView.recreate();

@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/iv_pic"
-        android:layout_width="157dp"
-        android:layout_height="207dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/image"
         app:layout_constraintBottom_toBottomOf="@id/gl"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,11 +20,12 @@
         android:id="@+id/app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sensum"
-        android:textSize="32sp"
         android:layout_marginTop="16dp"
-        android:textColor="#0b8477"
         android:fontFamily="sans-serif"
+        android:text="Sensum"
+        android:textColor="#0b8477"
+        android:textSize="35sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/gl" />
@@ -33,18 +34,17 @@
         android:id="@+id/subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:fontFamily="sans-serif"
-        android:textStyle="normal"
-        android:textColor="#0b8477"
-        android:letterSpacing="0.01"
         android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif"
         android:gravity="center_horizontal"
+        android:letterSpacing="0.01"
         android:text="To help you discover your best self"
-app:layout_constraintTop_toBottomOf="@id/app_name"
+        android:textColor="#0b8477"
+        android:textSize="14sp"
+        android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@id/app_name" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl"
