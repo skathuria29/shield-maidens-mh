@@ -72,7 +72,10 @@ A user journey in app is going through following steps:-
 
 ## Setup
 - To run android app, clone the repo and source code is available inside folder **mobileapp/SheildMaidens** 
+- To run app on your phones, download and install the apk on your device by giving permission to install from external source.
 
+## Live Demo
+Link to working app https://github.com/skathuria29/shield-maidens-mh/releases/tag/1.0
 ### To get server up and runnig
 - Go to the root folder
 - run command `npm install`
